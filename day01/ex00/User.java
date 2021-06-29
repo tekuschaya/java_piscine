@@ -1,39 +1,43 @@
-import java.util.UUID;
-
 public class User
 {
-	private UUID Identifier;
-	private String Name;
-	private int Balance;
+	private int id;
+	private String name;
+	private int balance;
 
-	int getbalance()
+	public User(int i, String n, int b)
 	{
-		return this.Balance;
-	}
-
-	String getName()
-	{
-		return this.Name;
+		this.id = i;
+		this.name = n;
+		this.balance = b;
 	}
 
-	UUID getIdentifier()
+	public int getBalance()
 	{
-		return this.Identifier;
+		return this.balance;
 	}
 
-	void setBalance(int b)
+	public String getName()
 	{
-		this.Balance = b;
-	}
-	void setName(String n)
-	{
-		this.Name = n;
-	}
-	void setIdentifier(UUID i) //убрать?
-	{
-		this.Identifier = i;
+		return this.name;
 	}
 
-	
+	public int getId()
+	{
+		return this.id;
+	}
+
+	public void setBalance(int b)
+	{
+		this.balance = b;
+	}
+	public void setName(String n)
+	{
+		this.name = n;
+	}
+	public void setId(int i)
+	{
+		this.id = i;
+	}
+
 
 }

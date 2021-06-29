@@ -2,9 +2,9 @@ import java.util.Scanner;
 
 public class Program
 {
-	private static boolean IsPrime(int n)
+	private static boolean isPrime(int n)
 	{
-		if (n == 2 || n == 3)
+		if (n == 2)
 			return true;
 		for (int i = 2; i * i <= n; i++)
 		{
@@ -14,7 +14,7 @@ public class Program
 		return true;
 	}
 
-	private static int SumNumber(int n)
+	private static int sumNumber(int n)
 	{
 		int res = 0;
 		while (n != 0)
@@ -32,10 +32,11 @@ public class Program
 		int number = scan.nextInt();
 		while (number != 42)
 		{
-			if (IsPrime(SumNumber(number)))
+			if (isPrime(sumNumber(number)))
 				count++;
 			number = scan.nextInt();
 		}
+		scan.close();
 		System.out.println("Count of coffee-request - " + count);
   	}
 }

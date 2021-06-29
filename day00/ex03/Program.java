@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 public class Program
 {
-	private static void IllegalArgument()
+	private static void illegalArgument()
 	{
 		System.err.println("IllegalArgument");
 		System.exit(-1);
 	}
 
-	private static long MyPow(int week_number)
+	private static long myPow(int week_number)
 	{
 		long res = 1;
 		for (int i = 1; i < week_number; i++)
@@ -16,13 +16,9 @@ public class Program
 		return res;
 	}
 
-	private static void PrintStatistic(int week_number, long data)
+	private static void printStatistic(int week_number, long data)
 	{
-		//String res = " ";
 		int count = 0;
-		// System.out.print("Week ");
-		// System.out.print(i);
-		// System.out.print(" ");
 		for (int i = 1; i <= week_number; i++)
 		{
 			System.out.print("Week ");
@@ -32,10 +28,7 @@ public class Program
 			data /= 10;
 			for (int j = 0; j < count; j++)
 				System.out.print("=");
-				//res += "=";
 			System.out.println(">");
-//			System.out.println("Week " + i + res + ">");
-//			res = " ";
 		}
 	}
 
@@ -51,25 +44,26 @@ public class Program
 		while (week.equals("42") == false)
 		{
 			if (week.equals("Week") == false || scan.hasNextInt() == false)
-				IllegalArgument();
+				illegalArgument();
 			week_number = scan.nextInt();
 			if (week_number - min_week != 1 || week_number > 18)
-				IllegalArgument();
+				illegalArgument();
 			min_week = week_number;
 			for (int i = 0; i < 5; i++)
 			{
 				if (scan.hasNextInt() == false)
-					IllegalArgument();
+					illegalArgument();
 				score = scan.nextInt();
 				if (score < 1 || score > 9)
-					IllegalArgument();
+					illegalArgument();
 				if (score < min_score)
 					min_score = score;
 			}
-			data = data + min_score * MyPow(week_number);
+			data = data + min_score * myPow(week_number);
 			min_score = 9;
 			week = scan.next();
 		}
-		PrintStatistic(week_number, data);
+		scan.close();
+		printStatistic(week_number, data);
 	}
 }
