@@ -34,8 +34,8 @@ public class Program
 				System.out.print("=");
 				//res += "=";
 			System.out.println(">");
-			//System.out.println("Week " + i + res + ">");
-			//res = " ";
+//			System.out.println("Week " + i + res + ">");
+//			res = " ";
 		}
 	}
 
