@@ -9,23 +9,24 @@ public class User
 		this.id = i;
 		this.name = n;
 		this.balance = b;
+		if (this.balance < 0)
+		{
+			System.err.println("Balance should be positive");
+			//System.exit(-1); //нельзя
+		}
 	}
-
 	public int getBalance()
 	{
 		return this.balance;
 	}
-
 	public String getName()
 	{
 		return this.name;
 	}
-
 	public int getId()
 	{
 		return this.id;
 	}
-
 	public void setBalance(int b)
 	{
 		this.balance = b;
@@ -38,6 +39,11 @@ public class User
 	{
 		this.id = i;
 	}
+	public void printUser()
+	{
+		System.out.println("user id = " + this.id + ", user name = " + this.name + ", balance = " + this.balance);
+	}
+
 
 
 }

@@ -1,12 +1,12 @@
 interface UserList {
 
-	public void addUser(User user) {}
+	void addUser(User user);
 
-	public User getUserById(int id) throws UserNotFoundException {}
+	User getUserById(int id) throws UserNotFoundException;
 
-	public User getUserByIndex(int index) throws UserNotFoundException {}
+	User getUserByIndex(int index) throws UserNotFoundException;
 
-	public int getNumberOfUsers() {}
+	int getNumberOfUsers();
 
 }
 

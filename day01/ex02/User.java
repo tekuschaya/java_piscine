@@ -9,7 +9,7 @@ public class User
 		if (b < 0)
 		{
 			System.err.println("balance should be positive");
-			System.exit(-1); //оставить?
+			//System.exit(-1); //оставить?
 		}
 		else
 			this.balance = b;

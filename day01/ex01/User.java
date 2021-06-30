@@ -8,7 +8,7 @@ public class User
 	{
 		this.id = UserIdsGenerator.getInstance().generateId();
 		this.name = n;
-		if (b < 0)
+		if (b < 0) // balance = 0?
 			System.err.println("balance should be positive");
 		else
 			this.balance = b;

@@ -1,4 +1,4 @@
-public class UsersArrayList
+public class UsersArrayList implements UserList//implements userlist?
 {
 	User[] users = new User[10];
 	//private int size = 0;
