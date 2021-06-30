@@ -36,8 +36,8 @@ public class Program
 		//olga.getTransactionsList().printTransaction();
 
 		Transaction[] olga_array = olga.getTransactionsList().toArray();
-		//for (int i = 0; i < olga_array.length; i++)
-		//	olga_array[i].printTransaction();
+		for (int i = 0; i < olga_array.length; i++)
+			olga_array[i].printTransaction();
 	}
 
 }

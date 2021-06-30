@@ -70,10 +70,10 @@ public class TransactionsLinkedList implements TransactionsList {
 		Transaction[] trans = new Transaction[this.length];
 		Transaction pointer = this.head;
 		int i = 0;
-		while (i < this.length)
-		{
+		while (pointer != null) {
 			trans[i] = pointer;
 			pointer = pointer.next;
+			i++;
 		}
 		return trans;
 	}

@@ -3,7 +3,7 @@ public class User
 	private final int id;
 	private String name;
 	private int balance;
-	TransactionsList transList = new TransactionsLinkedList();
+	private TransactionsList transList;
 
 	public User(String n, int b)
 	{
@@ -13,6 +13,7 @@ public class User
 			this.balance = b;
 		this.id = UserIdsGenerator.getInstance().generateId();
 		this.name = n;
+		this.transList = new TransactionsLinkedList();
 		//this.transList = null;
 	}
 	public int getBalance()
