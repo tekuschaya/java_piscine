@@ -36,7 +36,7 @@ public class Program
 			usersList.getUserByIndex(12).printUser();
 		}
 		catch (UserNotFoundException e) {
-    		System.out.println("\u001B[31m" + e + "\u001B[37m");
+			System.out.println("\u001B[31m" + e + "\u001B[37m");
 		}
 	}
 

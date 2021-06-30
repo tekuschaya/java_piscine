@@ -7,14 +7,12 @@ public class TransactionsLinkedList implements TransactionsList {
 	private int length = 0;
 
 	public void addTransaction(Transaction t) {
-		if (this.head == null)
-		{
+		if (this.head == null) {
 			this.head = t;
 			this.tail = t;
 		}
-		else
-		{
-			t.prev = this.tail;
+		else {
+			//t.prev = this.tail;
 			this.tail.next = t;
 			this.tail = t;
 		}
@@ -23,16 +21,14 @@ public class TransactionsLinkedList implements TransactionsList {
 
 	public void removeTransactionById(UUID id) throws TransactionNotFoundException {
 		Transaction pointer = this.head;
-		if (pointer != null && pointer.getId() == id)
-		{
+		if (pointer != null && pointer.getId() == id) {
 			this.head = pointer.next;
-			this.head.prev = null;
+			//this.head.prev = null;
 			pointer = null;
 			this.length--;
 		}
-		else
-		{
-			while (pointer != null)
+		else {
+			/*while (pointer != null)
 			{
 				if (pointer.getId() == id)
 				{
@@ -44,14 +40,12 @@ public class TransactionsLinkedList implements TransactionsList {
 				}
 				pointer = pointer.next;
 			}
-			throw new TransactionNotFoundException();
+			throw new TransactionNotFoundException();*/
 
 
-			/*Transaction tmp = this.head.next;
-			while (tmp != null)
-			{
-				if (tmp.getId() == id)
-				{
+			Transaction tmp = this.head.next;
+			while (tmp != null) {
+				if (tmp.getId() == id) {
 					pointer.next = tmp.next;
 					tmp = null;
 					this.length--;
@@ -60,8 +54,7 @@ public class TransactionsLinkedList implements TransactionsList {
 				pointer = tmp;
 				tmp = tmp.next;
 			}
-			throw new TransactionNotFoundException(); */
-
+			throw new TransactionNotFoundException();
 		}
 	}
 
@@ -71,6 +64,8 @@ public class TransactionsLinkedList implements TransactionsList {
 		Transaction pointer = this.head;
 		int i = 0;
 		while (pointer != null) {
+			pointer.printTransaction();
+			System.out.println("i = " + i);
 			trans[i] = pointer;
 			pointer = pointer.next;
 			i++;

@@ -1,7 +1,7 @@
 import java.util.UUID;
 
 enum category {Debit, Credit}
-enum status {SUCCESS, ERROR}
+enum status {SUCCESS, FAILED}
 
 public class Transaction //добавить статус?
 {
@@ -15,16 +15,17 @@ public class Transaction //добавить статус?
 
 	private status stat;
 
-	public Transaction(User user1, User user2, category c, int a)
+	public Transaction(UUID id, User user1, User user2, category c, int a)
 	{
-		this.id = UUID.randomUUID();
+		//this.id = UUID.randomUUID();
+		this.id = id;
 		this.sender = user1;
 		this.recepient = user2;
 		this.transferCategory = c;
 		this.amount = a;
 		this.next = null;
 		this.prev = null;
-		this.stat = status.ERROR;
+		this.stat = status.FAILED;
 		if ((c == category.Debit && a < 0) || (c == category.Credit && a >= 0))
 			System.err.println("Transaction error: type and amount do not match");
 		else if (c == category.Debit && user2.getBalance() - a < 0)
@@ -36,18 +37,22 @@ public class Transaction //добавить статус?
 			if (c == category.Debit)
 			{
 				this.sender.setBalance(this.sender.getBalance() + this.amount);
-				this.recepient.setBalance(this.recepient.getBalance() - this.amount);
+				//this.recepient.setBalance(this.recepient.getBalance() - this.amount);
 			}
 			else if (c == category.Credit)
 			{
-				this.sender.setBalance(this.sender.getBalance() + this.amount);
-				this.recepient.setBalance(this.recepient.getBalance() - this.amount);
+				//this.sender.setBalance(this.sender.getBalance() + this.amount);
+				this.recepient.setBalance(this.recepient.getBalance() + this.amount);
 			}
 			this.stat = status.SUCCESS;
 			System.out.println("Status of transaction: success");
 		}
-		this.recepient.getTransactionsList().addTransaction(this);
-		this.sender.getTransactionsList().addTransaction(this);
+		if (c == category.Debit) { 
+			this.sender.getTransactionsList().addTransaction(this);
+		}
+		else {
+			this.recepient.getTransactionsList().addTransaction(this);
+		}
 	}
 	public UUID getId()
 	{
@@ -55,7 +60,7 @@ public class Transaction //добавить статус?
 	}
 	public void printTransaction()
 	{
-		System.out.println("id = " + this.id + ", sender = " + this.sender + ", recepient = " + this.recepient +
+		System.out.println("id = " + this.id + ", sender = " + this.sender.getName() + ", recepient = " + this.recepient.getName() +
 		", category = " + this.transferCategory + ", amount = " + amount + ", status = " + this.stat);
 	}
 	/*public User getRecepient()
