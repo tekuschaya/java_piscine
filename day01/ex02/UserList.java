@@ -7,6 +7,5 @@ interface UserList {
 	User getUserByIndex(int index) throws UserNotFoundException;
 
 	int getNumberOfUsers();
-
 }
 

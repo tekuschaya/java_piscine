@@ -1,18 +1,16 @@
-public class UserIdsGenerator
-{
+public class UserIdsGenerator {
+
 	private int id = 1;
-	private static UserIdsGenerator generator = new UserIdsGenerator();
+	private static UserIdsGenerator instance;
 
 	private UserIdsGenerator() {}
-
-	public static UserIdsGenerator getInstance()
-	{
-		return generator;
+	public static UserIdsGenerator getInstance() {
+		if (instance == null) {
+			instance = new UserIdsGenerator();
+		}
+		return instance;
 	}
-
-	public int generateId()
-	{
+	public int generateId() {
 		return this.id++;
 	}
-
 }

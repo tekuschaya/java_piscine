@@ -22,76 +22,56 @@ public class Program {
 		System.out.println("Similarity = " + (long)(sim * 1e2) / 1e2);
 	}
 
+	public static void readFile(String filename, TreeSet<String> dict, HashMap<String, Integer> map) {
+		try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+    		for (String line; (line = br.readLine()) != null; ) {
+				String[] words = line.split("\\s+");
+        		for (String word : words) {
+					dict.add(word);
+					if (map.containsKey(word)) {
+						map.put(word, map.get(word) + 1);
+					}
+					else {
+						map.put(word, 1);
+					}
+				}
+			}
+			br.close();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+        }
+	}
+
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		String file1 = scan.next();
 		String file2 = scan.next();
-		scan.close();
 		HashMap<String, Integer> map1 = new HashMap<>();
 		HashMap<String, Integer> map2 = new HashMap<>();
-		TreeSet<String> dict = new TreeSet<String>();
+		TreeSet<String> dict = new TreeSet<>();
 		Vector<Integer> v1 = new Vector<>();
 		Vector<Integer> v2 = new Vector<>();
 
-		try (BufferedReader br1 = new BufferedReader(new FileReader(file1))) {
-    		for (String line; (line = br1.readLine()) != null; ) {
-				//System.out.println("line1 = " + line);
-				String[] words = line.split("\\s+");
-        		for (String word : words) {
-            		//System.out.println(word);
-					dict.add(word);
-					if (map1.containsKey(word)) {
-						//map1.put(word, Integer.valueOf(map1.get(word).intValue() + 1));
-						map1.put(word, map1.get(word) + 1);
-					}
-					else {
-						map1.put(word, 1);
-					}
-				}
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-        }
-		try (BufferedReader br2 = new BufferedReader(new FileReader(file2))) {
-    		for (String line; (line = br2.readLine()) != null; ) {
-				String[] words = line.split("\\s+");
-        		for (String word : words) {
-            		//System.out.println(word);
-					dict.add(word);
-					if (map2.containsKey(word)) {
-						map2.put(word, map2.get(word) + 1);
-						//map2.put(word, Integer.valueOf(map1.get(word).intValue() + 1));
-					}
-					else {
-						map2.put(word, 1);
-					}
-				}
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-        }
-		System.out.println("set = " + dict);
+		scan.close();
+		readFile(file1, dict, map1);
+		readFile(file2, dict, map2);
+		//System.out.println("set = " + dict);
 		for (String word : dict) {
 			if (map1.get(word) != null) {
 				v1.add(map1.get(word));
 			}
 			else {
-				//v1.add(new Integer(0));
 				v1.add(0);
 			}
 			if (map2.get(word) != null) {
 				v2.add(map2.get(word));
 			}
 			else {
-				//v2.add(new Integer(0));
 				v2.add(0);
 			}
 		}
-		//Integer i = 0;
-		//v1.add(i);
-		System.out.println("v1 = " + v1 + "  v2 = " + v2);
+		//System.out.println("v1 = " + v1 + "  v2 = " + v2);
 		countSimilarity(v1, v2);
 	}
 }

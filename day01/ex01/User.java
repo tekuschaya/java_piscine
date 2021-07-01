@@ -1,29 +1,36 @@
-public class User
-{
+public class User {
+	
 	private final int id;
 	private String name;
 	private int balance;
 
-	public User(String n, int b)
-	{
+	public User(String name, int balance) {
 		this.id = UserIdsGenerator.getInstance().generateId();
-		this.name = n;
-		if (b < 0) // balance = 0?
-			System.err.println("balance should be positive");
-		else
-			this.balance = b;
+		this.name = name;
+		this.balance = balance;
+		if (this.balance < 0) {
+			this.balance = 0;
+			System.err.println("Balance should be positive");
+		}
 	}
-	public int getBalance()
-	{
+	public int getBalance() {
 		return this.balance;
 	}
-	public String getName()
-	{
+	public String getName() {
 		return this.name;
 	}
-	public int getId()
-	{
+	public int getId() {
 		return this.id;
 	}
-
+	public void setBalance(int balance) {
+		if (balance < 0) {
+			System.out.println("Balance should be positive");
+		}
+		else {
+			this.balance = balance;
+		}
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }

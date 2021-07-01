@@ -12,7 +12,6 @@ public class TransactionsLinkedList implements TransactionsList {
 			this.tail = t;
 		}
 		else {
-			//t.prev = this.tail;
 			this.tail.next = t;
 			this.tail = t;
 		}
@@ -23,26 +22,10 @@ public class TransactionsLinkedList implements TransactionsList {
 		Transaction pointer = this.head;
 		if (pointer != null && pointer.getId() == id) {
 			this.head = pointer.next;
-			//this.head.prev = null;
 			pointer = null;
 			this.length--;
 		}
 		else {
-			/*while (pointer != null)
-			{
-				if (pointer.getId() == id)
-				{
-					pointer.prev.next = pointer.next;
-					pointer.next.prev = pointer.prev;
-					pointer = null;
-					this.length--;
-					return ;
-				}
-				pointer = pointer.next;
-			}
-			throw new TransactionNotFoundException();*/
-
-
 			Transaction tmp = this.head.next;
 			while (tmp != null) {
 				if (tmp.getId() == id) {
@@ -59,18 +42,14 @@ public class TransactionsLinkedList implements TransactionsList {
 	}
 
 	public Transaction[] toArray() {
-		System.out.println("length = " + this.length);
 		Transaction[] trans = new Transaction[this.length];
 		Transaction pointer = this.head;
 		int i = 0;
 		while (pointer != null) {
-			pointer.printTransaction();
-			System.out.println("i = " + i);
 			trans[i] = pointer;
 			pointer = pointer.next;
 			i++;
 		}
 		return trans;
 	}
-
 }

@@ -7,5 +7,4 @@ interface TransactionsList {
 	void removeTransactionById(UUID id) throws TransactionNotFoundException;
 
 	Transaction[] toArray();
-
 }

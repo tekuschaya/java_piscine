@@ -1,49 +1,42 @@
-public class User
-{
+public class User {
+	
 	private int id;
 	private String name;
 	private int balance;
 
-	public User(int i, String n, int b)
-	{
-		this.id = i;
-		this.name = n;
-		this.balance = b;
-		if (this.balance < 0)
-		{
+	public User(int id, String name, int balance) {
+		this.id = id;
+		this.name = name;
+		this.balance = balance;
+		if (this.balance < 0) {
+			this.balance = 0;
 			System.err.println("Balance should be positive");
-			//System.exit(-1); //нельзя
 		}
 	}
-	public int getBalance()
-	{
+	public int getBalance() {
 		return this.balance;
 	}
-	public String getName()
-	{
+	public String getName() {
 		return this.name;
 	}
-	public int getId()
-	{
+	public int getId() {
 		return this.id;
 	}
-	public void setBalance(int b)
-	{
-		this.balance = b;
+	public void setBalance(int balance) {
+		if (balance < 0) {
+			System.out.println("Balance should be positive");
+		}
+		else {
+			this.balance = balance;
+		}
 	}
-	public void setName(String n)
-	{
-		this.name = n;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public void setId(int i)
-	{
-		this.id = i;
+	public void setId(int id) {
+		this.id = id;
 	}
-	public void printUser()
-	{
+	public void printUser() {
 		System.out.println("user id = " + this.id + ", user name = " + this.name + ", balance = " + this.balance);
 	}
-
-
-
 }
